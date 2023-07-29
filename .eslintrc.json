@@ -10,5 +10,6 @@
         "project": true
     },
     "rules": {
+        "@typescript-eslint/no-floating-promises": 0
     }
 }
