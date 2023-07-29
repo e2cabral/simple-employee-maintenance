@@ -16,6 +16,7 @@
   "devDependencies": {
     "@fastify/swagger": "^8.8.0",
     "@fastify/swagger-ui": "^1.9.3",
+    "@types/mongoose": "^5.11.97",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "eslint": "^8.46.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
@@ -27,7 +28,9 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "fastify": "^4.21.0",
+    "mongoose": "^7.4.1",
     "reflect-metadata": "^0.1.13"
   }
 }
