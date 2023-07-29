@@ -15,6 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "@fastify/swagger": "^8.8.0",
+    "@fastify/swagger-ui": "^1.9.3",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "eslint": "^8.46.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
