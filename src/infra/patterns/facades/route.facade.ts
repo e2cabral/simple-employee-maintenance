@@ -1,6 +1,6 @@
 import { type FastifyInstance } from 'fastify'
-import { EmployeeRoutes } from '../../../../presentation/routes/employee.routes'
-import { DepartmentRoutes } from '../../../../presentation/routes/department.routes'
+import { EmployeeRoutes } from '../../../presentation/routes/employee.routes'
+import { DepartmentRoutes } from '../../../presentation/routes/department.routes'
 
 export const RouteRegistering = (app: FastifyInstance): void => {
   app

@@ -1,7 +1,7 @@
 import fastify, { type FastifyInstance } from 'fastify'
 import { SetDocumentation, SetDocumentationUI } from './documentation.config'
-import { RouteRegistering } from '../infra/patterns/facades/route.facades'
-import { Connect } from '../infra/database/connection'
+import { Connect } from '../../infra/database/connection'
+import { RouteRegistering } from '../../infra/patterns/facades/route.facade'
 
 export const Start = async (): Promise<void> => {
   const app: FastifyInstance = LoadApp()
