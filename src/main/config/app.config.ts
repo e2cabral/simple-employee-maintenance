@@ -1,5 +1,5 @@
 import fastify, { type FastifyInstance } from 'fastify'
-import { SetDocumentation } from './documentation.config'
+import { SetDocumentation, SetDocumentationUI } from './documentation.config'
 import { RouteRegistering } from '../infra/patterns/facades/route.facades'
 
 export const Start = async (): Promise<void> => {
@@ -7,9 +7,10 @@ export const Start = async (): Promise<void> => {
     logger: { level: 'debug' }
   })
 
-  RouteRegistering(app)
-
   await SetDocumentation(app)
+  await SetDocumentationUI(app)
+
+  RouteRegistering(app)
 
   ListenAndServe(app)
     .then((res) => {
