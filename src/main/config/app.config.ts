@@ -1,11 +1,17 @@
 import fastify, { type FastifyInstance } from 'fastify'
 import { SetDocumentation, SetDocumentationUI } from './documentation.config'
 import { RouteRegistering } from '../infra/patterns/facades/route.facades'
+import { LoadEnvironmentVars } from './environment.config'
+import { Connect } from '../infra/database/connection'
 
 export const Start = async (): Promise<void> => {
+  LoadEnvironmentVars()
+
   const app: FastifyInstance = fastify({
-    logger: { level: 'debug' }
+    logger: { level: String(process.env.LOG_LEVEL) }
   })
+
+  await Connect()
 
   await SetDocumentation(app)
   await SetDocumentationUI(app)
