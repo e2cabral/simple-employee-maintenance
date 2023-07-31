@@ -1,13 +1,12 @@
-import { type DefaultBody } from '../documentation.types'
-import { type EmployeeErrorResponse } from './index'
+import { type ErrorBody } from '../documentation.types'
 
-export const errorGenericResponse = (): DefaultBody<EmployeeErrorResponse> => {
+export const errorGenericResponse = (): ErrorBody => {
   return {
     description: 'Send an error message in case of error',
     type: 'object',
     properties: {
       message: { type: 'string' },
-      status: { type: 'integer' }
+      statusCode: { type: 'integer', default: 500 }
     }
   }
 }
