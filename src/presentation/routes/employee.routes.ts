@@ -3,7 +3,7 @@ import {
   defaultGetResponse,
   successGetResponse,
   errorGenericResponse,
-  successGetByIdResponse, defaultGetByIdResponse
+  successGetByIdResponse, defaultGetByIdResponse, noContentGenericResponse
 } from '../../main/documentation/routes/employees'
 
 export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, done: () => void): void => {
@@ -36,8 +36,45 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
       },
       () => {}
     )
-    .patch('/employees', {}, () => {})
-    .delete('/employees', {}, () => {})
+    .patch(
+      '/employees/:id',
+      {
+        schema: {
+          body: {
+            type: 'object',
+            properties: {
+              firstName: { type: 'string' },
+              fastName: { type: 'string' },
+              hireDate: { type: 'string' },
+              department: { type: 'string' },
+              phone: { type: 'string' },
+              address: { type: 'string' }
+            }
+          },
+          response: {
+            204: noContentGenericResponse('Update the fields sent'),
+            400: errorGenericResponse(),
+            500: errorGenericResponse(),
+            default: noContentGenericResponse('Update the fields sent')
+          }
+        }
+      },
+      () => {}
+    )
+    .delete(
+      '/employees/:id',
+      {
+        schema: {
+          response: {
+            204: noContentGenericResponse('Delete the employee'),
+            400: errorGenericResponse(),
+            500: errorGenericResponse(),
+            default: noContentGenericResponse('Delete the employee')
+          }
+        }
+      },
+      () => {}
+    )
 
   done()
 }
