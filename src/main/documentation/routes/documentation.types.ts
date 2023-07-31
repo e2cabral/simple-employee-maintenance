@@ -1,3 +1,5 @@
+import { type EmployeeErrorResponse, type EmployeeNoContentResponse } from './employees'
+
 export interface DefaultBody<T> {
   description?: string
   type: string
@@ -5,7 +7,7 @@ export interface DefaultBody<T> {
   items?: DefaultBody<T>
 }
 
-export interface ErrorBody extends DefaultBody<any> {
+export interface ErrorBody extends DefaultBody<EmployeeErrorResponse> {
   type: string
   properties: {
     message: { type: string }
@@ -13,7 +15,7 @@ export interface ErrorBody extends DefaultBody<any> {
   }
 }
 
-export interface NoContentBody extends DefaultBody<any> {
+export interface NoContentBody extends DefaultBody<EmployeeNoContentResponse> {
   type: string
   properties: {
     message: { type: string }
