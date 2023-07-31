@@ -15,5 +15,7 @@ export interface EmployeeErrorResponse {
 }
 
 export { successGetResponse } from './success-response.route'
+export { successGetByIdResponse } from './success-response.route'
 export { defaultGetResponse } from './default-response.route'
+export { defaultGetByIdResponse } from './default-response.route'
 export { errorGetResponse } from './error-response.route'
