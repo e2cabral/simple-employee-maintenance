@@ -1,4 +1,4 @@
-import { type DefaultBody } from '../documentation.types'
+import { type DefaultBody, type ErrorBody, type NoContentBody } from '../documentation.types'
 
 export interface EmployeeGetResponse {
   firstName: DefaultBody<any>
@@ -11,7 +11,12 @@ export interface EmployeeGetResponse {
 
 export interface EmployeeErrorResponse {
   message: DefaultBody<any>
-  status: DefaultBody<any>
+  statusCode: DefaultBody<ErrorBody>
+}
+
+export interface EmployeeNoContentResponse {
+  message: DefaultBody<any>
+  statusCode: DefaultBody<NoContentBody>
 }
 
 export { successGetResponse } from './success-response.route'
@@ -19,3 +24,4 @@ export { successGetByIdResponse } from './success-response.route'
 export { defaultGetResponse } from './default-response.route'
 export { defaultGetByIdResponse } from './default-response.route'
 export { errorGenericResponse } from './error-response.route'
+export { noContentGenericResponse } from './no-content-response.route'
