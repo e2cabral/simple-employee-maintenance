@@ -2,7 +2,7 @@ import { type FastifyInstance, type RouteShorthandOptions } from 'fastify'
 import {
   defaultGetResponse,
   successGetResponse,
-  errorGetResponse,
+  errorGenericResponse,
   successGetByIdResponse, defaultGetByIdResponse
 } from '../../main/documentation/routes/employees'
 
@@ -16,8 +16,8 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
         },
         response: {
           200: successGetResponse(),
-          400: errorGetResponse(),
-          500: errorGetResponse(),
+          400: errorGenericResponse(),
+          500: errorGenericResponse(),
           default: defaultGetResponse()
         }
       }
@@ -28,8 +28,8 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
         schema: {
           response: {
             200: successGetByIdResponse(),
-            400: errorGetResponse(),
-            500: errorGetResponse(),
+            400: errorGenericResponse(),
+            500: errorGenericResponse(),
             default: defaultGetByIdResponse()
           }
         }
