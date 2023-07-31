@@ -13,3 +13,7 @@ export interface EmployeeErrorResponse {
   message: DefaultBody<any>
   status: DefaultBody<any>
 }
+
+export { successGetResponse } from './success-response.route'
+export { defaultGetResponse } from './default-response.route'
+export { errorGetResponse } from './error-response.route'
