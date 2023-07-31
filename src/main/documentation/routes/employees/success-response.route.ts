@@ -18,3 +18,18 @@ export const successGetResponse = (): DefaultBody<EmployeeGetResponse> => {
     }
   }
 }
+
+export const successGetByIdResponse = (): DefaultBody<EmployeeGetResponse> => {
+  return {
+    description: 'Retrieve employees paginated',
+    type: 'object',
+    properties: {
+      firstName: { type: 'string' },
+      fastName: { type: 'string' },
+      hireDate: { type: 'string' },
+      department: { type: 'string' },
+      phone: { type: 'string' },
+      address: { type: 'string' }
+    }
+  }
+}
