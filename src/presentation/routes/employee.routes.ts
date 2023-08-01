@@ -3,7 +3,12 @@ import {
   defaultGetResponse,
   successGetResponse,
   errorGenericResponse,
-  successGetByIdResponse, defaultGetByIdResponse, noContentGenericResponse
+  successGetByIdResponse,
+  defaultGetByIdResponse,
+  noContentGenericResponse,
+  badGatewayError,
+  internalServerError,
+  gatewayTimeoutError
 } from '../../main/documentation/routes/employees'
 
 export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, done: () => void): void => {
@@ -17,7 +22,9 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
         response: {
           200: successGetResponse(),
           400: errorGenericResponse(),
-          500: errorGenericResponse(),
+          500: internalServerError(),
+          502: badGatewayError(),
+          504: gatewayTimeoutError(),
           default: defaultGetResponse()
         }
       }
@@ -29,7 +36,9 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
           response: {
             200: successGetByIdResponse(),
             400: errorGenericResponse(),
-            500: errorGenericResponse(),
+            500: internalServerError(),
+            502: badGatewayError(),
+            504: gatewayTimeoutError(),
             default: defaultGetByIdResponse()
           }
         }
@@ -54,7 +63,9 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
           response: {
             204: noContentGenericResponse('Update the fields sent'),
             400: errorGenericResponse(),
-            500: errorGenericResponse(),
+            500: internalServerError(),
+            502: badGatewayError(),
+            504: gatewayTimeoutError(),
             default: noContentGenericResponse('Update the fields sent')
           }
         }
@@ -68,7 +79,9 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
           response: {
             204: noContentGenericResponse('Delete the employee'),
             400: errorGenericResponse(),
-            500: errorGenericResponse(),
+            500: internalServerError(),
+            502: badGatewayError(),
+            504: gatewayTimeoutError(),
             default: noContentGenericResponse('Delete the employee')
           }
         }
