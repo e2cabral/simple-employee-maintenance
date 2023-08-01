@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules --respawn src/app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --passWithNoTests --watch"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@fastify/swagger": "^8.8.0",
     "@fastify/swagger-ui": "^1.9.3",
+    "@types/jest": "^29.5.3",
     "@types/mongoose": "^5.11.97",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "eslint": "^8.46.0",
@@ -30,7 +31,9 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "fastify": "^4.21.0",
+    "joi": "^17.9.2",
     "mongoose": "^7.4.1",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^29.1.1"
   }
 }
