@@ -1,4 +1,4 @@
-import { type FastifyInstance, type RouteShorthandOptions } from 'fastify'
+import { type FastifyInstance, type FastifyReply, type FastifyRequest, type RouteShorthandOptions } from 'fastify'
 import {
   defaultGetResponse,
   successGetResponse,
@@ -10,25 +10,27 @@ import {
   internalServerError,
   gatewayTimeoutError
 } from '../../main/documentation/routes/employees'
+import { getEmployee } from '../controllers/employee/get-employee'
 
 export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, done: () => void): void => {
   app
     .get('/employees', {
       schema: {
         querystring: {
-          page: { type: 'number' },
-          offset: { type: 'number' }
+          page: { type: 'string' },
+          offset: { type: 'string' }
         },
         response: {
           200: successGetResponse(),
           400: errorGenericResponse(),
+          404: errorGenericResponse(),
           500: internalServerError(),
           502: badGatewayError(),
           504: gatewayTimeoutError(),
           default: defaultGetResponse()
         }
       }
-    }, () => {})
+    }, async (request: FastifyRequest, reply: FastifyReply) => { await getEmployee(request, reply) })
     .get(
       '/employees/:id',
       {
@@ -36,6 +38,7 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
           response: {
             200: successGetByIdResponse(),
             400: errorGenericResponse(),
+            404: errorGenericResponse(),
             500: internalServerError(),
             502: badGatewayError(),
             504: gatewayTimeoutError(),
