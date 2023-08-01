@@ -3,7 +3,7 @@ import { SetDocumentation, SetDocumentationUI } from './documentation.config'
 import { Connect } from '../../infra/database/connection'
 import { RouteRegistering } from '../../infra/patterns/facades/route.facade'
 
-export const Start = async (): Promise<void> => {
+export const Start = async (): Promise<FastifyInstance> => {
   const app: FastifyInstance = LoadApp()
 
   try {
@@ -18,6 +18,8 @@ export const Start = async (): Promise<void> => {
   } catch (err) {
     app.log.error((err as Error).message)
   }
+
+  return app
 }
 
 const ListenAndServe = async (app: FastifyInstance): Promise<string> => {
