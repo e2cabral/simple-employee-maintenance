@@ -53,7 +53,7 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
             type: 'object',
             properties: {
               firstName: { type: 'string' },
-              fastName: { type: 'string' },
+              lastName: { type: 'string' },
               hireDate: { type: 'string' },
               department: { type: 'string' },
               phone: { type: 'string' },

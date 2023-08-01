@@ -2,7 +2,7 @@ import { type DefaultBody, type ErrorBody, type NoContentBody } from '../documen
 
 export interface EmployeeGetResponse {
   firstName: DefaultBody<any>
-  fastName: DefaultBody<any>
+  lastName: DefaultBody<any>
   hireDate: DefaultBody<any>
   department: DefaultBody<any>
   phone: DefaultBody<any>

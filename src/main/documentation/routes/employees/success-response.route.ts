@@ -9,7 +9,7 @@ export const successGetResponse = (): DefaultBody<EmployeeGetResponse> => {
       type: 'object',
       properties: {
         firstName: { type: 'string' },
-        fastName: { type: 'string' },
+        lastName: { type: 'string' },
         hireDate: { type: 'string' },
         department: { type: 'string' },
         phone: { type: 'string' },
@@ -25,7 +25,7 @@ export const successGetByIdResponse = (): DefaultBody<EmployeeGetResponse> => {
     type: 'object',
     properties: {
       firstName: { type: 'string' },
-      fastName: { type: 'string' },
+      lastName: { type: 'string' },
       hireDate: { type: 'string' },
       department: { type: 'string' },
       phone: { type: 'string' },
