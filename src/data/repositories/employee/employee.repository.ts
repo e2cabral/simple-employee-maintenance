@@ -26,4 +26,28 @@ export namespace EmployeeRepository {
       throw new Error((err as Error).message)
     }
   }
+
+  export const getEmployeeById = async (id: string): Promise<EmployeeDTO | null> => {
+    try {
+      const employee = await Employee
+        .findOne({ _id: id })
+        .exec()
+
+      if (employee === null) {
+        return null
+      }
+
+      return new EmployeeDTO(
+        employee._id,
+        employee.firstName,
+        employee.lastName,
+        employee.hireDate,
+        employee.department,
+        employee.phone,
+        employee.address
+      )
+    } catch (err) {
+      throw new Error((err as Error).message)
+    }
+  }
 }
