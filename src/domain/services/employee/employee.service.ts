@@ -9,4 +9,12 @@ export namespace EmployeeService {
       throw new Error((err as Error).message)
     }
   }
+
+  export const getEmployeeById = async (id: string): Promise<EmployeeDTO | null> => {
+    try {
+      return await EmployeeRepository.getEmployeeById(id)
+    } catch (err) {
+      throw new Error((err as Error).message)
+    }
+  }
 }
