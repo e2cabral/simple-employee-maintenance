@@ -11,6 +11,7 @@
     },
     "rules": {
         "@typescript-eslint/no-floating-promises": 0,
-        "@typescript-eslint/consistent-type-definitions": 0
+        "@typescript-eslint/consistent-type-definitions": 0,
+        "@typescript-eslint/no-namespace": 0
     }
 }
