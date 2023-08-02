@@ -8,6 +8,7 @@ export const defaultGetResponse = (): DefaultBody<EmployeeGetResponse> => {
     items: {
       type: 'object',
       properties: {
+        _id: { type: 'string' },
         firstName: { type: 'string' },
         lastName: { type: 'string' },
         hireDate: { type: 'string' },
@@ -23,6 +24,7 @@ export const defaultGetByIdResponse = (): DefaultBody<EmployeeGetResponse> => {
     description: 'Retrieve employees paginated',
     type: 'object',
     properties: {
+      _id: { type: 'string' },
       firstName: { type: 'string' },
       lastName: { type: 'string' },
       hireDate: { type: 'string' },
