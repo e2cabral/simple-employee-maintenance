@@ -1,6 +1,7 @@
 import { type DefaultBody, type ErrorBody, type NoContentBody } from '../documentation.types'
 
 export interface EmployeeGetResponse {
+  _id: DefaultBody<any>
   firstName: DefaultBody<any>
   lastName: DefaultBody<any>
   hireDate: DefaultBody<any>
