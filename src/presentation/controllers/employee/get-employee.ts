@@ -1,5 +1,7 @@
 import { type FastifyReply, type FastifyRequest } from 'fastify'
 import Joi from 'joi'
+import { EmployeeService } from '../../../domain/services/employee/employee.service'
+import { ConvertTo } from '../../helper/convertion.helper'
 
 const validate = (data: unknown): Joi.ValidationResult => {
   const schema = Joi.object({
@@ -10,20 +12,24 @@ const validate = (data: unknown): Joi.ValidationResult => {
   return schema.validate(data)
 }
 
-export const getEmployee = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
-  const hasError = validate(request.query).error
+type PageOffsetQuerystring = { page: string, offset: string }
 
-  if (hasError != null) {
-    reply.status(400).send({ message: hasError })
-  }
-  reply.send([
-    {
-      firstName: 'string',
-      fastName: 'string',
-      hireDate: 'string',
-      department: 'string',
-      phone: 'string',
-      address: 'string'
+export const getEmployee = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+  try {
+    const hasError = validate(request.query).error
+
+    if (hasError != null) {
+      reply
+        .status(400)
+        .send({ message: hasError })
     }
-  ])
+
+    const { page, offset } = ConvertTo<PageOffsetQuerystring>(request.query)
+
+    const employees = await EmployeeService.getEmployee(Number(page), Number(offset))
+
+    reply.send(employees)
+  } catch (err) {
+    reply.send({ message: (err as Error).message })
+  }
 }
