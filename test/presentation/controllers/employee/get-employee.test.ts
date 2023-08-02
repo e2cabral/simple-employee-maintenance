@@ -33,4 +33,24 @@ describe('Get Employees', () => {
     expect(response.statusCode).toBe(400)
     expect(JSON.parse(response.body).message).toBe('ValidationError: "page" is required')
   })
+
+  test('Should return 400 if no offset is provided', async () => {
+    const response = await app.inject({
+      method: 'GET',
+      url: '/v1/employees?page=1'
+    })
+
+    expect(response.statusCode).toBe(400)
+    expect(JSON.parse(response.body).message).toBe('ValidationError: "offset" is required')
+  })
+
+  test('Should return 400 if no parameter is provided', async () => {
+    const response = await app.inject({
+      method: 'GET',
+      url: '/v1/employees'
+    })
+
+    expect(response.statusCode).toBe(400)
+    expect(JSON.parse(response.body).message).toBe('ValidationError: "page" is required')
+  })
 })
