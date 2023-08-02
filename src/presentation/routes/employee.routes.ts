@@ -11,6 +11,7 @@ import {
   gatewayTimeoutError
 } from '../../main/documentation/routes/employees'
 import { getEmployee } from '../controllers/employee/get-employee'
+import { getEmployeeById } from '../controllers/employee/get-employee-by-id'
 
 export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, done: () => void): void => {
   app
@@ -46,7 +47,7 @@ export const EmployeeRoutes = (app: FastifyInstance, _: RouteShorthandOptions, d
           }
         }
       },
-      () => {}
+      async (request: FastifyRequest, reply: FastifyReply) => { await getEmployeeById(request, reply) }
     )
     .patch(
       '/employees/:id',
