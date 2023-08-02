@@ -17,4 +17,4 @@ const EmployeeSchema = new Schema({
   address: { type: String, required: true }
 })
 
-export const Employee: Model<IEmployee> = mongoose.model<IEmployee>('Employee', EmployeeSchema)
+export const Employee: Model<IEmployee> = mongoose.model<IEmployee>('Employees', EmployeeSchema)
